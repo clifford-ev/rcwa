@@ -40,7 +40,7 @@ class CSVLoader:
     def load(self):
         raw_data = pd.read_csv(self.filename)
         wavelengths, n_dispersive = nk_to_complex(raw_data)
-        er_dispersive = np.sqrt(n_dispersive)
+        er_dispersive = np.square(n_dispersive)
         ur_dispersive = np.ones(er_dispersive.shape)
 
         return {'wavelength': wavelengths, 'n': n_dispersive, 'er': er_dispersive, 'ur': ur_dispersive}
